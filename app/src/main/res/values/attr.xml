@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CheckBoxCustomView">
+        <attr format="reference" name="c_uncheckedBackground"/>
+        <attr format="reference" name="c_checkedBackground"/>
+        <attr format="dimension" name="c_width"/>
+        <attr format="dimension" name="c_height"/>
+        <attr format="string" name="t_text"/>
+        <attr format="reference" name="t_font"/>
+        <attr format="dimension" name="t_width"/>
+        <attr format="dimension" name="t_height"/>
+        <attr format="dimension" name="t_fontSize"/>
+        <attr format="color" name="t_color"/>
+    </declare-styleable>
+</resources>
