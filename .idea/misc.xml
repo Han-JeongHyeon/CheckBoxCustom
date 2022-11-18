@@ -4,7 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/unchecked.xml" value="0.2395" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
         <entry key="app/src/main/res/layout/checkbox_customview.xml" value="0.18568840579710144" />
         <entry key="app/src/main/res/layout/customview_checkbox.xml" value="0.25" />
       </map>

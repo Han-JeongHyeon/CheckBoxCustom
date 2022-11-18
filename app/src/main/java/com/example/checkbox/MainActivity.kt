@@ -15,9 +15,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.asd.setting()
-
-        binding.asd.setOnCheckedChangeListener(object: CheckBoxCustomView.OnCheckedChangeListener{
+        binding.checkBox.setOnCheckedChangeListener(object: CheckBoxCustomView.OnCheckedChangeListener{
             override fun onCheckChange(compoundButton: CompoundButton, isChecked: Boolean) {
                 Log.d("TAG", "$isChecked")
             }

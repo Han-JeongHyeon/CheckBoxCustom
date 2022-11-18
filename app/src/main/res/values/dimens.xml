@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="widthSize">30dp</dimen>
-    <dimen name="heightSize">30dp</dimen>
-    <dimen name="fontSize">10dp</dimen>
+    <dimen name="c_widthSize">30dp</dimen>
+    <dimen name="c_heightSize">30dp</dimen>
+    <dimen name="t_widthSize">30dp</dimen>
+    <dimen name="t_heightSize">30dp</dimen>
+    <dimen name="t_fontSize">8dp</dimen>
 </resources>

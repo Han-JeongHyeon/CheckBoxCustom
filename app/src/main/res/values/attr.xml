@@ -7,8 +7,8 @@
         <attr format="dimension" name="c_height"/>
         <attr format="string" name="t_text"/>
         <attr format="reference" name="t_font"/>
-        <attr format="dimension" name="t_width"/>
-        <attr format="dimension" name="t_height"/>
+        <attr format="dimension|string" name="t_width"/>
+        <attr format="dimension|string" name="t_height"/>
         <attr format="dimension" name="t_fontSize"/>
         <attr format="color" name="t_color"/>
     </declare-styleable>

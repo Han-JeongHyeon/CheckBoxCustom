@@ -6,6 +6,7 @@ import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.CompoundButton
 import androidx.annotation.RequiresApi
@@ -15,9 +16,6 @@ import com.example.checkbox.databinding.CustomviewCheckboxBinding
 
 class CheckBoxCustomView(context: Context, attrs: AttributeSet): ConstraintLayout(context, attrs)  {
     private var binding: CustomviewCheckboxBinding
-
-    private var unChecked: Drawable? = null
-    private var checked: Drawable? = null
 
     interface OnCheckedChangeListener {
         fun onCheckChange(compoundButton: CompoundButton, isChecked: Boolean)
@@ -29,11 +27,13 @@ class CheckBoxCustomView(context: Context, attrs: AttributeSet): ConstraintLayou
         this.listener = listener
     }
 
-    private var checkBocWidth: Float
-    private var checkBocHeight: Float
+    private var unChecked: Drawable? = null
+    private var checked: Drawable? = null
+    private var checkBoxWidth: Float
+    private var checkBoxHeight: Float
 
-    private var textWidth: Float
-    private var textHeight: Float
+    private var textWidth: String?
+    private var textHeight: String?
     private var text: String?
     private var fontSize: Float
     private var textColor: Int
@@ -44,8 +44,12 @@ class CheckBoxCustomView(context: Context, attrs: AttributeSet): ConstraintLayou
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CheckBoxCustomView)
 
-        checkBocWidth = typedArray.getDimension(R.styleable.CheckBoxCustomView_c_width, 20F)
-        checkBocHeight = typedArray.getDimension(R.styleable.CheckBoxCustomView_c_height, 20F)
+        val c_layoutParams = binding.checkBox.layoutParams
+
+        val t_layoutParams = binding.textView.layoutParams
+
+        checkBoxWidth = typedArray.getDimension(R.styleable.CheckBoxCustomView_c_width, 20F)
+        checkBoxHeight = typedArray.getDimension(R.styleable.CheckBoxCustomView_c_height, 20F)
 
         unChecked = ContextCompat.getDrawable(
             context,
@@ -63,28 +67,38 @@ class CheckBoxCustomView(context: Context, attrs: AttributeSet): ConstraintLayou
             )
         )
 
-        binding.checkBox.background = unChecked
-
         binding.checkBox.setOnCheckedChangeListener { compoundButton, isChecked ->
             compoundButton.setBackgroundResource(if (isChecked) R.drawable.checked else R.drawable.unchecked)
             listener?.onCheckChange(compoundButton, isChecked)
         }
 
-        textWidth = typedArray.getDimension(R.styleable.CheckBoxCustomView_t_width, 20F)
-        textHeight = typedArray.getDimension(R.styleable.CheckBoxCustomView_t_height, 20F)
+        c_layoutParams.width = checkBoxWidth.toInt()
+        c_layoutParams.height = checkBoxHeight.toInt()
+        binding.checkBox.layoutParams = c_layoutParams
+
+        binding.checkBox.background = unChecked
+
+        textWidth = typedArray.getString(R.styleable.CheckBoxCustomView_t_width)
+        textHeight = typedArray.getString(R.styleable.CheckBoxCustomView_t_height)
 
         text = typedArray.getString(R.styleable.CheckBoxCustomView_t_text)
-        fontSize = typedArray.getFloat(R.styleable.CheckBoxCustomView_t_fontSize,16F)
+        fontSize = typedArray.getDimension(R.styleable.CheckBoxCustomView_t_fontSize,16F)
         textColor = typedArray.getColor(R.styleable.CheckBoxCustomView_t_color, Color.BLACK)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             textFont = typedArray.getFont(R.styleable.CheckBoxCustomView_t_font)
         }
 
+        t_layoutParams.width = if (textWidth == "wrap") LayoutParams.WRAP_CONTENT
+        else typedArray.getDimension(R.styleable.CheckBoxCustomView_t_width, 20F).toInt()
+
+        t_layoutParams.height = if (textHeight == "wrap") LayoutParams.WRAP_CONTENT
+        else typedArray.getDimension(R.styleable.CheckBoxCustomView_t_height, 20F).toInt()
+
+        binding.textView.layoutParams = t_layoutParams
+
         val textView = binding.textView
 
         textView.text = text
-        textView.width = textWidth.toInt()
-        textView.height = textHeight.toInt()
         textView.textSize = fontSize
         textView.setTextColor(textColor)
         textView.typeface = textFont
@@ -92,14 +106,6 @@ class CheckBoxCustomView(context: Context, attrs: AttributeSet): ConstraintLayou
 
     fun isChecked(): Boolean{
         return binding.checkBox.isChecked
-    }
-
-    fun setting(){
-        val layoutParams = binding.checkBox.layoutParams
-
-        layoutParams.width = checkBocWidth.toInt()
-        layoutParams.height = checkBocHeight.toInt()
-        binding.checkBox.layoutParams = layoutParams
     }
 
 }

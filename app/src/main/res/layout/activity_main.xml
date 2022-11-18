@@ -7,19 +7,22 @@
     tools:context=".MainActivity">
 
     <com.example.checkbox.CheckBoxCustomView
-        android:id="@+id/asd"
+        android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:c_width="@dimen/widthSize"
-        app:c_height="@dimen/heightSize"
-        app:t_font="@font/dnfd"
-        app:t_text="assas"
-        app:t_color="#875353"
+        app:c_height="@dimen/c_heightSize"
+        app:c_width="@dimen/c_widthSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498" />
+        app:layout_constraintVertical_bias="0.498"
+        app:t_color="#875353"
+        app:t_font="@font/dnfd"
+        app:t_fontSize="@dimen/t_fontSize"
+        app:t_height="wrap"
+        app:t_width="wrap"
+        app:t_text="아무 텍스트나 입력해주세요" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
