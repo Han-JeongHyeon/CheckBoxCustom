@@ -4,7 +4,7 @@
 체크박스    
 app:c_height="@dimen/c_heightSize"    
 app:c_width="@dimen/c_widthSize"    
-app:c_checkedBackground="@drawable/unchecked"   
+app:c_checkedBackground="@drawable/checked"   
 app:c_uncheckedBackground="@drawable/unchecked"   
 
 텍스트
